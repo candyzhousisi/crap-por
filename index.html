@@ -7,6 +7,25 @@
     <title>crap portfolio</title>
 </head>
 <body>
-    
+    <div class="row">
+        <div class="col-12 d-flex justify-content-center flex-wrap">
+          <div class="d-inline-block position-relative" *ngFor="let image of images; let i=index;">
+            <button class="btn p-0 image-button">
+              <img
+                *ngIf="image.type == 'image'"
+                class="img-fluid"
+                [src]="image.base64"
+                (click)="currentImage = image"
+              />
+              <video
+                *ngIf="image.type == 'video'"
+                [src]="image.base64"
+                (click)="currentImage = image"
+              ></video>
+            </button>
+            <button (click)="removeImage(i)" class="btn close-button">
+              <i class="fa fa-times"></i>
+            </button>
+          </div>          
 </body>
 </html>
